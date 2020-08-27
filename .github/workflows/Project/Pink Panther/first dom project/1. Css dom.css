@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: greenyellow;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    text-size-adjust: 14px;
+    height: 50px;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'FunSized', sans-serif;
+    font-style: normal;
+    font-size: 32px;
+    height: 100px;
+}
