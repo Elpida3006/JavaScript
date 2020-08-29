@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 100px;
+    background-color: greenyellow;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+button {
+    /* display: flex; */
+    margin: 30px;
+    background-color: white;
+    height: 30px;
+    width: 150
+}
+
+button a {
+    color: black;
+    text-size-adjust: 14px;
+    font-size: 1.2em;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: none;
+    margin: 15px;
+}
