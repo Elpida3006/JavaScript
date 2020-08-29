@@ -42,7 +42,34 @@ button.Black {
     color: ivory;
 }
 
-button.back {
+button.back,
+button.startPaint {
+    margin: 10px;
     background-color: white;
     color: teal;
+}
+
+#result {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 300;
+    color: white;
+}
+
+.startPaint {
+    background-color: white;
+    color: teal;
+}
+
+h2 {
+    color: teal;
+}
+
+button a {
+    color: teal;
+    text-size-adjust: 14px;
+    font-size: 1.6em;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: none;
+    margin: 15px;
 }
