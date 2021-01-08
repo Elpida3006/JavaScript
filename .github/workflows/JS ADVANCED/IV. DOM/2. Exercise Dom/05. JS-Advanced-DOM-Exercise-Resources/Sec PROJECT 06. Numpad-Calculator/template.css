@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    height: 100%;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-size: 4vw;
+    font-weight: 300px;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 80%;
+    background: radial-gradient(circle, black, #ddd);
+    background-size: cover;
+    background-image: url("https://cutewallpaper.org/21/vaporwave-computer-background/ftestickers-background-computer-error-glitcheffect-vapo.png");
+}
+
+#calculator {
+    width: 12em;
+    height: auto;
+    background: linear-gradient( blue, #258d36);
+    margin: 1em auto;
+    /* border: 0.1px solid whitesmoke; */
+    border-radius: 25px;
+}
+
+.top button.clear {
+    float: left;
+    color: #FFF;
+}
+
+.top #expressionOutput {
+    height: 3em;
+    width: 9em;
+    padding-right: 1em;
+    float: right;
+    color: #FFF;
+    line-height: 3em;
+    text-align: right;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.top #resultOutput {
+    height: 3em;
+    width: 9em;
+    padding-right: 1em;
+    float: right;
+    color: #FFF;
+    line-height: 3em;
+    text-align: right;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.keys,
+.top {
+    overflow: hidden;
+}
+
+.keys button {
+    /* .top button.clear { */
+    float: left;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    color: rgb(15, 15, 15);
+    text-align: center;
+    user-select: none;
+    transition: background-color 0.2s ease;
+    background: #1ef349;
+    border-right: 1px solid rgba(40, 66, 182, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.heading {
+    text-align: center;
+    padding: 5px;
+    color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: inherit;
+}
+
+.clear {
+    float: right;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    color: rgb(15, 15, 15);
+    text-align: center;
+    user-select: none;
+    transition: background-color 0.2s ease;
+    background: white;
+    border-right: 1px solid rgba(40, 66, 182, 0.3);
+    border-bottom: 1px solid rgba(19, 110, 247, 0.3);
+}
+
+.Skeys button {
+    float: left;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    color: white;
+    text-align: center;
+    user-select: none;
+    transition: background-color 0.2s ease;
+    background: linear-gradient( rgb(18, 19, 19), #021306);
+    border-right: 1px solid rgba(40, 66, 182, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.keys button.operator {
+    background: hsla(194, 87%, 50%, 0.897);
+    border-right: 0;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.keys button.equals {
+    color: #888e5f;
+}
+
+.keys button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #FFF;
+}
+
+.keys button.equals:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.top button.clear:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFF;
+}

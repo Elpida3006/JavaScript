@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    background-color: teal;
+}
+
+button {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    background-color: turquoise;
+    color: white;
+}
+
+h2 {
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
