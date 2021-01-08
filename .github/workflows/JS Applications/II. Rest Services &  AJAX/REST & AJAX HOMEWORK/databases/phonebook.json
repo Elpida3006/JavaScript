@@ -1,0 +1,38 @@
+{
+    "phonebook": {
+        "1": {
+            "person": "Gosho",
+            "phone": "+359 0967653"
+        },
+        "2": {
+            "person": "Stamat",
+            "phone": "+359 09123467653"
+        },
+        "3": {
+            "person": "irina",
+            "phone": "+359 0967653"
+        },
+        "4": {
+            "person": "Ilian",
+            "phone": "+359 09123467653"
+        },
+        "5": {
+            "person": "Koceto",
+            "phone": "+359 096765553"
+        },
+        "6": {
+            "person": "Hristo",
+            "phone": "+359 091234769653"
+        },
+        "7": {
+            "person": "Navcho",
+            "phone": "+359 091234769653"
+        },
+        "8": {
+            "person": "Cvetelin",
+            "phone": "+359 091234769653"
+        }
+
+
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "unittesting",
+    "version": "1.0.0",
+    "description": "testing and modules",
+    "main": "index.js",
+    "scripts": {
+        "start": "index",
+        "test": "mocha \"**/*spec.js\""
+    },
+    "keywords": [
+        "testing"
+    ],
+    "author": "nadq",
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^4.2.0",
+        "mocha": "^8.1.3"
+    }
+}
