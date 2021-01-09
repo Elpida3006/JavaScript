@@ -1,2 +1,7 @@
 # JavaScript
-It's a simple solutions from More Exercise in different level learn of SoftUni, and example small projects.
+
+
+        The workflows file is a step-by-step presentation of the levels of language learning, 
+        accompanied by some of the study materials, exercises, 
+        homework code and additional tasks.
+
