@@ -34,7 +34,6 @@
 // }
 
 
-//Ivo
 // solve = () => {
 //         let a = document.querySelectorAll(' a')
 
@@ -47,7 +46,7 @@
 //             })
 //         }
 //     }
-//в Judje не приема querySelectorAll().forEach - не му било функция
+
 function solve() {
     let linksElement = Array.from(document.getElementsByClassName('link-1'));
 
