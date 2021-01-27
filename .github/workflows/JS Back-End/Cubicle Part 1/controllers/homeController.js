@@ -5,9 +5,9 @@ const router = Router();
 router.get('/', (req, res) => {
     res.redirect('/products');
 });
-router.get('/products', (req, res) => {
-    res.render('home');
-})
+// router.get('/products', (req, res) => {
+//     res.render('home');
+// })
 router.get('/create', (req, res) => {
     res.render('create')
 })

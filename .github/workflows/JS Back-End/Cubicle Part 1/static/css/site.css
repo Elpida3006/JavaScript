@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
 body {
     margin: 0;
     padding: 0;
@@ -66,6 +65,7 @@ div.container {
 h1 {
     text-align: center;
     text-transform: uppercase;
+    color: rgb(20, 20, 58);
 }
 
 div.cube {
@@ -90,7 +90,8 @@ p.name {
     border-bottom: 1px solid #2b415433;
 }
 
-button, main a.btn {
+button,
+main a.btn {
     border: none;
     padding: 8px;
     text-align: center;
@@ -139,7 +140,6 @@ div.about {
     background-color: #f3f3f2;
     padding: 3em;
 }
-
 
 div.about a {
     text-decoration: none;
@@ -220,13 +220,16 @@ span.error {
     display: block;
 }
 
-img#sadFaceImg{
+img#sadFaceImg {
     display: block;
     margin: 0 auto;
+    height: 500px;
+    padding: 7%;
 }
 
-h2{
+h2 {
     text-align: center;
+    color: rgb(11, 11, 53);
 }
 
 footer {
@@ -237,15 +240,14 @@ footer {
     font-size: 20px;
 }
 
+
 /*Animations & Transitions
 */
-
 
 @-webkit-keyframes fadeOut {
     from {
         opacity: 1;
     }
-
     to {
         opacity: 0;
     }
@@ -255,7 +257,6 @@ footer {
     from {
         opacity: 1;
     }
-
     to {
         opacity: 0;
     }
