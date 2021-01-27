@@ -1,4 +1,4 @@
-const env = process.env.NODE_ENV || 'development';
+// const env = process.env.NODE_ENV || 'development';
 
 const config = {
     development: {
@@ -9,4 +9,4 @@ const config = {
     }
 }
 
-module.exports = config[env];
+module.exports = config[process.env.NODE_ENV || 'development'];
