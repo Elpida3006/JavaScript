@@ -56,4 +56,14 @@ router.post('/create', (req, res) => {
         .catch(() => res.status(500).end())
 })
 
+
+router.post('/:id/attachAccessory', (req, res) => {
+    service.postAttachAccessory(req.body)
+        .then(() => {
+            console.log(req.body);
+            res.redirect('/products')
+        })
+        .catch(() => res.status(500).end())
+})
+
 module.exports = router;

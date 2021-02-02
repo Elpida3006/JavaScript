@@ -1,5 +1,5 @@
 const Accessory = require('../models/Accessory');
-const Cube = require('../models/Cube');
+
 
 
 function listAccessories() {
@@ -18,7 +18,7 @@ function postCreateAccessory(data) {
 function getId(id) {
 
     return Accessory.findById(id).lean()
-        // .populate('accessories')
+        // .populate('cubes')
 
 }
 module.exports = {

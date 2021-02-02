@@ -36,8 +36,14 @@ function getId(id) {
 
 }
 
+function postAttachAccessory(data) {
+
+
+}
+
 module.exports = {
     filterProducts,
     postCreateCube,
     getId,
+    postAttachAccessory
 }
