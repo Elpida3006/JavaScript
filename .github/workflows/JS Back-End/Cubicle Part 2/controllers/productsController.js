@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const service = require('../services/productServise');
-
+const accessoryService = require('../services/accessoryService')
 
 
 router.get('/', (req, res) => {
@@ -20,6 +20,7 @@ router.get('/about-cubicle', (req, res) => {
 });
 router.get('/details/:cubeId', (req, res) => {
     console.log(req.params.cubeId);
+
     service.getId(req.params.cubeId)
         .then(productHbs => {
             console.log(productHbs);
@@ -27,8 +28,24 @@ router.get('/details/:cubeId', (req, res) => {
         })
 })
 
+router.get('/:id/attachAccessory', (req, res) => {
+    console.log(req.params.id);
 
+    let cubeId = req.params.id;
 
+    Promise.all([
+            service.getId(cubeId),
+            accessoryService.listAccessories()
+        ])
+        .then(([cube, accessories]) => {
+            console.log({ cube, accessories });
+
+            res.render('attachAccessory', { title: 'Product Accessory', cube, accessories })
+
+        })
+        .catch(error => console.error(`unhandled promises`))
+
+})
 
 router.post('/create', (req, res) => {
     service.postCreateCube(req.body)

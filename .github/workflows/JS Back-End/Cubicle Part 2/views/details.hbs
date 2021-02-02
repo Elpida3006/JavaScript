@@ -6,6 +6,24 @@
         <p><span>Description:</span>{{productHbs.description}}</p>
         <p><span>Difficulty level:</span>{{productHbs.difficultyLevel}}</p>
         <a class="btn" href="/">Back</a>
-          <a class="btn" href="/accessories/attachAccessory">Attach Accessory</a>
+       
+      </div>
+
+
+       
+    <h2>Accessories</h2>
+    <div class="accessories">
+        {{#each productHbs.accessories }}
+    <div class="accessory">
+      <img src="{{imageURL}}" alt="stickerName" />
+      <h3>{{name}}</h3>
+      <p>{{description}}</p>
+    </div>
+    {{else}}
+    <h3 class="italic">This cube has no accessories yet...</h3>
+    {{/each}}
+    <div class="details">
+       <a class="btn" href="/products/{{productHbs._id}}/attachAccessory">Attach Accessory</a>
+    </div>
       </div>
     </main>
