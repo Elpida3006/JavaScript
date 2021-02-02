@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Cube = require('./Cube');
 
-const cubeSchema = new mongoose.Schema({
+const accessorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -18,15 +19,10 @@ const cubeSchema = new mongoose.Schema({
         unique: false,
         validate: /^http|https/
     },
-    difficultyLevel: {
-        type: Number,
-        required: true,
-        minlength: 1,
-        maxlength: 7
-    },
-    accessories: [{
+
+    cubes: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'accessory'
+        ref: 'Cube'
     }]
 });
-module.exports = new mongoose.model('Cube', cubeSchema);
+module.exports = new mongoose.model('Accessory', accessorySchema);
