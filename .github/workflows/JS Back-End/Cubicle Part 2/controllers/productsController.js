@@ -3,7 +3,6 @@ const router = Router();
 const service = require('../services/productServise');
 const accessoryService = require('../services/accessoryService')
 
-
 router.get('/', (req, res) => {
     service.filterProducts(req.query)
         .then(products => {
@@ -21,11 +20,13 @@ router.get('/about-cubicle', (req, res) => {
 router.get('/details/:cubeId', (req, res) => {
     console.log(req.params.cubeId);
 
-    service.getId(req.params.cubeId)
+    service.getIdAccessories(req.params.cubeId)
         .then(productHbs => {
             console.log(productHbs);
             res.render('details', { title: 'Product Details', productHbs })
         })
+        .catch(error => console.error(`unhandled populate rejection`))
+
 })
 
 router.get('/:id/attachAccessory', (req, res) => {
@@ -58,12 +59,17 @@ router.post('/create', (req, res) => {
 
 
 router.post('/:id/attachAccessory', (req, res) => {
-    service.postAttachAccessory(req.body)
+    let accessoryId = req.body.accessory
+    let cubeId = req.params.id;
+
+    service.postAttachAccessory(cubeId, accessoryId)
         .then(() => {
-            console.log(req.body);
-            res.redirect('/products')
+            res.redirect(`/details/${cubeId}`)
+
+
         })
-        .catch(() => res.status(500).end())
+        .catch(() => res.status(500).end(`no handled Promise.All`))
+
 })
 
 module.exports = router;

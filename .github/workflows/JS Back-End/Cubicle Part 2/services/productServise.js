@@ -1,5 +1,5 @@
 const Cube = require('../models/Cube');
-
+const Accessory = require('../models/Accessory')
 
 function filterProducts(query) {
     const { from, search, to } = query;
@@ -18,9 +18,9 @@ function filterProducts(query) {
         newCube.difficultyLevel = newCube.difficultyLevel || {};
         newCube.difficultyLevel.$lte = +to;
     }
-    return Cube.find(newCube).lean()
+    return Cube.find(newCube)
         // .populate('accessories')
-
+        .lean()
 }
 
 function postCreateCube(data) {
@@ -31,19 +31,29 @@ function postCreateCube(data) {
 
 function getId(id) {
 
-    return Cube.findById(id).lean()
-        // .populate('accessories')
+    return Cube.findById(id)
+        .lean()
 
 }
 
-function postAttachAccessory(data) {
+function getIdAccessories(id) {
+    return Cube.findById(id)
+        .populate('accessories')
+        .lean();
+}
 
+async function postAttachAccessory(cubeId, accessoryId) {
+    let product = await Cube.findById(cubeId)
+    let accessory = await Accessory.findById(accessoryId)
 
+    product.accessories.push(accessory);
+    return product.save();
 }
 
 module.exports = {
     filterProducts,
     postCreateCube,
     getId,
-    postAttachAccessory
+    postAttachAccessory,
+    getIdAccessories
 }
