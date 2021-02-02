@@ -1,5 +1,5 @@
 const Cube = require('../models/Cube');
-// const productData = require('../dataOperations/productData');
+
 
 function filterProducts(query) {
     const { from, search, to } = query;
@@ -18,8 +18,8 @@ function filterProducts(query) {
         newCube.difficultyLevel = newCube.difficultyLevel || {};
         newCube.difficultyLevel.$lte = +to;
     }
-    return Cube.find(newCube).lean();
-    // .populate('accessories')
+    return Cube.find(newCube).lean()
+        // .populate('accessories')
 
 }
 
@@ -31,8 +31,8 @@ function postCreateCube(data) {
 
 function getId(id) {
 
-    return Cube.findById(id).lean();
-    // .populate('accessories')
+    return Cube.findById(id).lean()
+        // .populate('accessories')
 
 }
 

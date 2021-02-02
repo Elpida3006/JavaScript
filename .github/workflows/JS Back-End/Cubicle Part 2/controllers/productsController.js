@@ -6,8 +6,7 @@ const service = require('../services/productServise');
 
 router.get('/', (req, res) => {
     service.filterProducts(req.query)
-
-    .then(products => {
+        .then(products => {
             res.render('home', { title: 'BROWSE', products })
         })
         .catch(() => res.status(500).end())
