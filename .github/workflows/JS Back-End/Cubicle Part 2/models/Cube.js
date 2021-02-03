@@ -25,8 +25,8 @@ const cubeSchema = new mongoose.Schema({
         maxlength: 7
     },
     accessories: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'accessory'
+        type: mongoose.Types.ObjectId,
+        ref: 'Accessory'
     }]
 });
 module.exports = new mongoose.model('Cube', cubeSchema);

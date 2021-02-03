@@ -39,6 +39,7 @@ function getId(id) {
 function getIdAccessories(id) {
     return Cube.findById(id)
         .populate('accessories')
+        //tuk se chupi
         .lean();
 }
 
@@ -48,6 +49,8 @@ async function postAttachAccessory(cubeId, accessoryId) {
 
     product.accessories.push(accessory);
     return product.save();
+
+
 }
 
 module.exports = {

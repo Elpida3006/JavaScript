@@ -64,7 +64,8 @@ router.post('/:id/attachAccessory', (req, res) => {
 
     service.postAttachAccessory(cubeId, accessoryId)
         .then(() => {
-            res.redirect(`/details/${cubeId}`)
+
+            res.redirect(`/products`)
 
 
         })

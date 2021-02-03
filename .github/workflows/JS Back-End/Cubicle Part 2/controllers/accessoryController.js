@@ -5,12 +5,8 @@ const service = require('../services/accessoryService');
 router.get('/createAccessory', (req, res) => {
     res.render('createAccessory')
 });
-router.get('/:id/attachAccessory', (req, res) => {
-    res.render('attachAccessory')
-});
-router.get('/updateDetailsPage', (req, res) => {
-    res.render('updateDetailsPage')
-});
+
+
 
 
 
