@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
+    background-image: url('https://i.pinimg.com/originals/a9/bc/08/a9bc0805113ec1e08f668004a055512b.jpg');
 }
 
 header ul {
@@ -31,7 +32,7 @@ header {
     list-style-type: none;
     margin: auto;
     padding: 0;
-    background-color: #607588;
+    background-color: #292a2b;
 }
 
 header ul li {
@@ -42,7 +43,7 @@ header ul li {
 header ul li a {
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
+    color: rgb(129, 126, 126);
     font-weight: bold;
     margin: 0 1em;
 }
@@ -65,13 +66,13 @@ div.container {
 h1 {
     text-align: center;
     text-transform: uppercase;
-    color: rgb(20, 20, 58);
+    color: rgb(213, 213, 221);
 }
 
 div.cube {
     display: inline-block;
     border: 1px solid #2b415433;
-    background: white;
+    background: rgb(109, 108, 108);
     width: 23%;
     vertical-align: top;
 }
@@ -106,6 +107,23 @@ main a.btn {
     color: white;
 }
 
+#deletbtn,
+#editbtn {
+    border: solid 2px black;
+    padding: 12px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    width: 23%;
+    margin: 12px;
+    margin-left: 1%;
+    margin-bottom: 33px;
+    border-radius: 9px;
+    background: linear-gradient(#205586, black);
+    color: white;
+}
+
 button:hover {
     background-color: #0B2133;
     color: white;
@@ -122,8 +140,12 @@ div.details {
     display: block;
     margin: auto;
     width: 50%;
-    background-color: #f3f3f2;
+    /* background-color: #3739a7; */
     padding: 1em;
+}
+
+.cubegeneral {
+    border: solid 2px white;
 }
 
 span {
@@ -137,7 +159,7 @@ span {
 div.about {
     display: block;
     margin: auto;
-    background-color: #f3f3f2;
+    background-color: #363534;
     padding: 3em;
 }
 
@@ -229,7 +251,17 @@ img#sadFaceImg {
 
 h2 {
     text-align: center;
-    color: rgb(11, 11, 53);
+    color: rgb(216, 216, 224);
+}
+
+h3 {
+    text-align: left;
+    color: rgb(216, 216, 224);
+}
+
+p {
+    text-align: left;
+    color: rgb(216, 216, 224);
 }
 
 footer {

@@ -1,0 +1,14 @@
+    <main>
+    <h1>Delete Accessory</h1>
+    <div class="form">
+        <form action='/accessories/delete/{{_id}}' method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="{{name}}" >
+            <label for="name">Description</label>
+            <textarea id="name" name="description" value="{{description}}"></textarea>
+            <label for="image">ImageUrl</label>
+            <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</main>
