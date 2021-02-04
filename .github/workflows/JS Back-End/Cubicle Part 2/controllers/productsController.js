@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const service = require('../services/productServise');
 const accessoryService = require('../services/accessoryService')
+const { validateInput } = require('../middlewares/inputValidate');
 
 router.get('/', (req, res) => {
     service.filterProducts(req.query)
@@ -48,7 +49,7 @@ router.get('/:id/attachAccessory', (req, res) => {
 
 })
 
-router.post('/create', (req, res) => {
+router.post('/create', validateInput, (req, res) => {
     service.postCreateCube(req.body)
         .then(() => {
             console.log(req.body);
@@ -61,7 +62,7 @@ router.post('/create', (req, res) => {
 router.post('/:id/attachAccessory', (req, res) => {
     let accessoryId = req.body.accessory
     let cubeId = req.params.id;
- // Promise.all([
+    // Promise.all([
     //         Cube.findById(cubeId).lean(),
     //         Accessory.findById(accessoryId).lean()
 

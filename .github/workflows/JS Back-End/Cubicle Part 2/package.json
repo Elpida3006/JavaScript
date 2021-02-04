@@ -8,6 +8,7 @@
         "start": "nodemon"
     },
     "dependencies": {
+        "alert": "^5.0.10",
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
         "express-handlebars": "^5.2.0",
