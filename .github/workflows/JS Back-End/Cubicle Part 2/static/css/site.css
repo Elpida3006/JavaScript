@@ -43,7 +43,7 @@ header ul li {
 header ul li a {
     text-decoration: none;
     text-transform: uppercase;
-    color: rgb(129, 126, 126);
+    color: rgb(8, 137, 146);
     font-weight: bold;
     margin: 0 1em;
 }
@@ -122,6 +122,24 @@ main a.btn {
     border-radius: 9px;
     background: linear-gradient(#205586, black);
     color: white;
+}
+
+#backbtnC,
+#editbtnC,
+#deletbtnC {
+    border: solid 2px black;
+    padding: 12px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    width: 23%;
+    margin: 12px;
+    margin-left: 1%;
+    margin-bottom: 33px;
+    border-radius: 15px;
+    background: linear-gradient(#205586, rgb(48, 47, 47));
+    color: rgb(239, 250, 90);
 }
 
 button:hover {
@@ -265,10 +283,10 @@ p {
 }
 
 footer {
-    background: #607588;
+    background: #2f2f30;
     padding: 1em;
     text-align: center;
-    color: white;
+    color: rgb(8, 137, 146);
     font-size: 20px;
 }
 
