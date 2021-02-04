@@ -50,7 +50,6 @@ async function postAttachAccessory(cubeId, accessoryId) {
     product.accessories.push(accessory);
     return product.save();
 
-
 }
 
 module.exports = {
