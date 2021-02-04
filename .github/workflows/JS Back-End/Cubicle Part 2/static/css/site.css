@@ -101,10 +101,11 @@ main a.btn {
     font-size: 18px;
     width: 43%;
     margin: 12px;
-    margin-left: 6%;
-    border-radius: 4px;
+    margin-left: 26%;
+    border-radius: 14px;
     background: #607588;
-    color: white;
+    border: 2px solid white;
+    color: rgb(3, 3, 41)
 }
 
 #deletbtn,
@@ -157,9 +158,9 @@ a {
 div.details {
     display: block;
     margin: auto;
-    width: 50%;
+    width: 75%;
     /* background-color: #3739a7; */
-    padding: 1em;
+    padding: 0em;
 }
 
 .cubegeneral {
