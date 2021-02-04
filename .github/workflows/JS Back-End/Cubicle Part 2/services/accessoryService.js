@@ -6,6 +6,10 @@ function listAccessories() {
     return Accessory.find().lean();
 }
 
+function listDifferentAccessories(ids) {
+    return Accessory.find({ _id: { $nin: ids } }).lean();
+}
+
 function postCreateAccessory(data) {
     console.log(data);
 
@@ -25,5 +29,6 @@ module.exports = {
 
     postCreateAccessory,
     listAccessories,
+    listDifferentAccessories,
     getId
 }

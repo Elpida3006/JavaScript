@@ -29,7 +29,7 @@ function postCreateCube(data) {
     return cube.save();
 }
 
-function getId(id) {
+function getCube(id) {
 
     return Cube.findById(id)
         .lean()
@@ -39,7 +39,6 @@ function getId(id) {
 function getIdAccessories(id) {
     return Cube.findById(id)
         .populate('accessories')
-        //tuk se chupi
         .lean();
 }
 
@@ -55,7 +54,7 @@ async function postAttachAccessory(cubeId, accessoryId) {
 module.exports = {
     filterProducts,
     postCreateCube,
-    getId,
+    getCube,
     postAttachAccessory,
     getIdAccessories
 }

@@ -19,7 +19,7 @@ router.get('/about-cubicle', (req, res) => {
     res.render('about');
 });
 router.get('/details/:cubeId', (req, res) => {
-    console.log(req.params.cubeId);
+    // console.log(req.params.cubeId);
 
     service.getIdAccessories(req.params.cubeId)
         .then(productHbs => {
@@ -31,23 +31,32 @@ router.get('/details/:cubeId', (req, res) => {
 })
 
 router.get('/:id/attachAccessory', (req, res) => {
-    console.log(req.params.id);
+        // console.log(req.params.id);
 
-    let cubeId = req.params.id;
+        let cubeId = req.params.id;
+        let accessoryId = req.body.accessory;
+        // console.log(accessoryId);
 
-    Promise.all([
-            service.getId(cubeId),
-            accessoryService.listAccessories()
-        ])
-        .then(([cube, accessories]) => {
-            console.log({ cube, accessories });
+        Promise.all([
+                service.getCube(cubeId),
+                accessoryService.listDifferentAccessories(accessoryId)
+            ])
+            .then(([cube, accessories]) => {
 
-            res.render('attachAccessory', { title: 'Product Accessory', cube, accessories })
+                res.render('attachAccessory', { title: 'Product Accessory', cube, accessories })
 
-        })
-        .catch(error => console.error(`unhandled promises`))
+            })
+            .catch(error => console.error(`unhandled promises`))
 
-})
+    })
+    //     router.get('/:id/attachAccessory', async(req, res) => {
+    //         let cubeId = req.params.id;
+
+//     let product = await service.getCube(cubeId);
+//     let accessories = await accessoryService.listDifferentAccessories(product.accessories);
+
+//     res.render('attachAccessory', { product, accessories });
+// });
 
 router.post('/create', validateInput, (req, res) => {
     service.postCreateCube(req.body)
