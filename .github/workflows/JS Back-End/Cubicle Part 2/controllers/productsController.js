@@ -61,13 +61,19 @@ router.post('/create', (req, res) => {
 router.post('/:id/attachAccessory', (req, res) => {
     let accessoryId = req.body.accessory
     let cubeId = req.params.id;
+ // Promise.all([
+    //         Cube.findById(cubeId).lean(),
+    //         Accessory.findById(accessoryId).lean()
 
+    //     ])
+    //     .then(([product, accessory]) => {
+    //         // console.log({ product, accessory });
+    //         product.accessories.push(accessory);
+    //         return product.save();
+    //     })
     service.postAttachAccessory(cubeId, accessoryId)
         .then(() => {
-
             res.redirect(`/products`)
-
-
         })
         .catch(() => res.status(500).end(`no handled Promise.All`))
 
