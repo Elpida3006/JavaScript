@@ -30,6 +30,25 @@ router.get('/details/:cubeId', (req, res) => {
 
 })
 
+router.get('/editCube/:cubeId', (req, res) => {
+
+    const id = req.params.cubeId;
+
+    service.getCube(id).then(cube => {
+        res.render('editCube', cube);
+    }).catch(error => console.error(`Edit page not found`));
+
+});
+
+router.get('/deleteCube/:cubeId', (req, res) => {
+    const id = req.params.cubeId;
+
+    servise.getCube(id).then((cube) => {
+        res.render('deleteCube', cube)
+    }).catch(error => console.error(`Delete page not found`));
+})
+
+
 router.get('/:id/attachAccessory', (req, res) => {
         // console.log(req.params.id);
 
@@ -57,6 +76,8 @@ router.get('/:id/attachAccessory', (req, res) => {
 
 //     res.render('attachAccessory', { product, accessories });
 // });
+
+
 
 router.post('/create', validateInput, (req, res) => {
     service.postCreateCube(req.body)
