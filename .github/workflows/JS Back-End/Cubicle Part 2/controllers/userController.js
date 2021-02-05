@@ -10,6 +10,19 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login')
 });
+router.get('/logout', (req, res) => {
+    // const token = getJWT(req);
+
+    // if (!token) { res.redirect('/'); return; }
+
+    // jwt.verify(token, jwtSecret, function(err, payload) {
+    //     if (Date.now() < payload.exp) {
+    //         // if token is valid then put it inside blacklist database
+    //     }
+    //     res.clearCookie(authCookieName);
+    res.redirect('/');
+    // });
+})
 
 
 
