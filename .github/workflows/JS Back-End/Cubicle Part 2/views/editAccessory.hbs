@@ -8,7 +8,8 @@
             <textarea id="name" name="description" >{{description}}</textarea>
             <label for="image">ImageUrl</label>
             <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
-            <input type="submit" value="Edit Accessory">
+            <input  id="backbtn"  type="submit" value="Edit">
+              <a id="backbtn" href="/products/details/{{productHbs._id}}">Back</a>
         </form>
     </div>
 </main>

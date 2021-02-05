@@ -110,7 +110,8 @@ main a.btn {
 }
 
 #deletbtn,
-#editbtn {
+#editbtn,
+#backbtn {
     border: solid 2px black;
     padding: 12px;
     text-align: left;
