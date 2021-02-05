@@ -22,6 +22,15 @@ router.get('/logout', (req, res) => {
     //     res.clearCookie(authCookieName);
     res.redirect('/');
     // });
+});
+router.post('/register', (req, res) => {
+
+    userServise.register(req.body)
+        .then(() => { res.render('login') })
+        .catch(error => {
+            console.error(`is not register`)
+            res.render('*')
+        })
 })
 
 

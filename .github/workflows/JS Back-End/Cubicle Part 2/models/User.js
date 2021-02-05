@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Cube = require('./Cube');
 
 const userSchema = new mongoose.Schema({
+    id: mongoose.Types.ObjectId,
     username: {
         type: String,
         required: true,
@@ -16,4 +17,4 @@ const userSchema = new mongoose.Schema({
     },
 
 });
-module.exports = new mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
