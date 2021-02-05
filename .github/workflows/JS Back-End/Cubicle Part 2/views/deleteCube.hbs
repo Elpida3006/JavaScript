@@ -4,9 +4,9 @@
 <div class="form">
   <form action='/deleteCube/{{_id}}' method="POST">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="{{name}}" disabled="true"/>
+    <input type="text" id="name" name="name" value="{{name}}" disabled="false"/>
     <label for="name">Description</label>
-    <textarea id="name" name="description" disabled="true"/></textarea>
+    <textarea id="name" name="description" disabled="true"/>{{description}}</textarea>
     <label for="image">ImageUrl</label>
     <input type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled="true"/>
     <label for="difficulty">Difficulty</label>

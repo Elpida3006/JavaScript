@@ -34,8 +34,8 @@ router.get('/editCube/:cubeId', (req, res) => {
 
     const id = req.params.cubeId;
 
-    service.getCube(id).then(cube => {
-        res.render('editCube', cube);
+    service.getCube(id).then(productHbs => {
+        res.render('editCube', productHbs);
     }).catch(error => console.error(`Edit page not found`));
 
 });
@@ -43,8 +43,8 @@ router.get('/editCube/:cubeId', (req, res) => {
 router.get('/deleteCube/:cubeId', (req, res) => {
     const id = req.params.cubeId;
 
-    servise.getCube(id).then((cube) => {
-        res.render('deleteCube', cube)
+    service.getCube(id).then((productHbs) => {
+        res.render('deleteCube', productHbs)
     }).catch(error => console.error(`Delete page not found`));
 })
 
