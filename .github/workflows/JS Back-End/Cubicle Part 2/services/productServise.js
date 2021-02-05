@@ -23,11 +23,9 @@ function filterProducts(query) {
         .lean()
 }
 
-function postCreateCube(data) {
-    let cube = new Cube(data);
 
-    return cube.save();
-}
+
+
 
 function getCube(id) {
 
@@ -51,10 +49,33 @@ async function postAttachAccessory(cubeId, accessoryId) {
 
 }
 
+function postEditCube(id, data) {
+
+    return Cube.updateOne(id, data);
+
+}
+
+function postDeleteCube(id) {
+
+    return Cube.deleteOne({ _id: id })
+
+}
+
+function postCreateCube(data) {
+    // let cube = new Cube(data);
+    // return cube.save();
+    return Cube.create(data)
+
+
+
+}
+
 module.exports = {
     filterProducts,
     postCreateCube,
     getCube,
     postAttachAccessory,
-    getIdAccessories
+    getIdAccessories,
+    postEditCube,
+    postDeleteCube
 }

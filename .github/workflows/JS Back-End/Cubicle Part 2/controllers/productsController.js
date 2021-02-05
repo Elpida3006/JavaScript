@@ -3,6 +3,7 @@ const router = Router();
 const service = require('../services/productServise');
 const accessoryService = require('../services/accessoryService')
 const { validateInput } = require('../middlewares/inputValidate');
+const { isValidObjectId } = require('mongoose');
 
 router.get('/', (req, res) => {
     service.filterProducts(req.query)
@@ -108,6 +109,28 @@ router.post('/:id/attachAccessory', (req, res) => {
         })
         .catch(() => res.status(500).end(`no handled Promise.All`))
 
+
 })
+
+router.post('/editCube/:cubeId', (req, res) => {
+
+    const id = req.params.cubeId;
+
+    const { name, description, difficultyLevel, imageUrl } = req.body
+
+    service.postEditCube({ _id: id }, { name, description, difficultyLevel, imageUrl })
+        .then(() => res.redirect('/'))
+        .catch(error => console.error(`Edit  not found`));
+
+});
+router.post('/deleteCube/:cubeId', (req, res) => {
+
+    const id = req.params.cubeId;
+
+    service.postDeleteCube(id)
+        .then(() => res.redirect('/'))
+        .catch(error => console.error(`Is not Delete`));
+
+});
 
 module.exports = router;
