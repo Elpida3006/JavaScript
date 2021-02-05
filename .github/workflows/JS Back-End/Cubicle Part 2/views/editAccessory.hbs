@@ -1,7 +1,7 @@
     <main>
     <h1>Edit Accessory</h1>
     <div class="form">
-        <form action='/editAccessory/{{_id}}' method="POST">
+        <form action='/accessories/editAccessory/{{_id}}' method="POST">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="{{name}}" >
             <label for="name">Description</label>
@@ -9,7 +9,7 @@
             <label for="image">ImageUrl</label>
             <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
             <input  id="backbtn"  type="submit" value="Edit">
-              <a id="backbtn" href="/products/details/{{productHbs._id}}">Back</a>
+              <a id="backbtn" href="/products">Back</a>
         </form>
     </div>
 </main>

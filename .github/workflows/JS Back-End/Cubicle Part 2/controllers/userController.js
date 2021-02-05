@@ -3,9 +3,14 @@ const router = Router();
 const userServise = require('../services/userServise');
 
 
-router.get('edit/:cubeId', (req, res) => {
-    res.render('editCube')
-})
+
+router.get('/register', (req, res) => {
+    res.render('register')
+});
+router.get('/login', (req, res) => {
+    res.render('login')
+});
+
 
 
 

@@ -25,10 +25,22 @@ function getId(id) {
         // .populate('cubes')
 
 }
+
+function postEditAccessory(id, data) {
+    return Accessory.updateOne(id, data);
+}
+
+function postDeleteAccessory(id) {
+    return Accessory.deleteOne({ _id: id })
+}
+
 module.exports = {
 
     postCreateAccessory,
     listAccessories,
     listDifferentAccessories,
-    getId
+    getId,
+    postEditAccessory,
+    postDeleteAccessory
+
 }

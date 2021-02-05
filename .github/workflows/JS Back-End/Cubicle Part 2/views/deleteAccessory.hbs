@@ -1,7 +1,7 @@
     <main>
     <h1>Delete Accessory</h1>
     <div class="form">
-        <form action='/deleteAccessory/{{_id}}' method="POST">
+        <form action='/accessories/deleteAccessory/{{_id}}' method="POST">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="{{name}}" >
             <label for="name">Description</label>
@@ -9,7 +9,7 @@
             <label for="image">ImageUrl</label>
             <input type="text" id="image" name="imageUrl" value="{{imageUrl}}">
             <input id="backbtn" type="submit" value="Delete">
-            <a id="backbtn" href="/products/details/{{productHbs._id}}">Back</a>
+            <a id="backbtn" href="/products">Back</a>
 
         </form>
     </div>

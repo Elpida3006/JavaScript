@@ -42,4 +42,24 @@ router.get('/deleteAccessory/:id', (req, res) => {
     }).catch(error => console.error(`Delete page not found`));
 })
 
+router.post('/editAccessory/:id', (req, res) => {
+
+    const id = req.params.id;
+
+    const { name, description, imageUrl } = req.body
+
+    service.postEditAccessory({ _id: id }, { name, description, imageUrl })
+        .then(() => res.redirect('/'))
+        .catch(error => console.error(`Edit  not found`));
+
+});
+router.post('/deleteAccessory/:id', (req, res) => {
+
+    const id = req.params.id;
+
+    service.postDeleteAccessory(id)
+        .then(() => res.redirect('/'))
+        .catch(error => console.error(`Is not Delete`));
+
+});
 module.exports = router;
