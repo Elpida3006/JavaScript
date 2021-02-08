@@ -19,12 +19,12 @@ const userSchema = new mongoose.Schema({
     }
 });
 userSchema.methods.comparePasswords = function(providedPassword) {
-    //callback ili Promise, zashoto e asinhronna operaciqta
+    //callback или  Promise, защото е асинхронна операция
     return new Promise((resolve, reject) => {
         bcrypt.compare(providedPassword, this.password, function(err, result) {
             if (err) { reject(err); return; }
             resolve(result);
-            // result vryshta true /false
+            // result връща  true /false
         });
     });
 };

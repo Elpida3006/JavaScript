@@ -1,8 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 const userServise = require('../services/userServise');
-
-
+const config = require('../config/config');
+const { jwtSecret, authCookieName } = config;
+const jwt = require('jsonwebtoken');
+const promisify = require('util').promisify;
+const getJWT = require('../utils/get-jwt')
 
 router.get('/register', (req, res) => {
     res.render('register')
@@ -11,37 +14,38 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 router.get('/logout', (req, res) => {
-    // const token = getJWT(req);
 
-    // if (!token) { res.redirect('/'); return; }
-
-    // jwt.verify(token, jwtSecret, function(err, payload) {
-    //     if (Date.now() < payload.exp) {
-    //         // if token is valid then put it inside blacklist database
-    //     }
-    //     res.clearCookie(authCookieName);
+    res.clearCookie(authCookieName);
     res.redirect('/');
-    // });
-});
-router.post('/register', (req, res) => {
 
+
+});
+
+
+
+router.post('/register', (req, res) => {
+    console.log(req.body);
     userServise.postRegister(req.body)
-        .then(() => { res.render('login') })
+        .then(() => { res.redirect('login') })
         .catch(error => {
             console.error(`Is not register`)
-            res.render('*')
+            res.render('/')
         })
-})
-router.post('/login', (req, res) => {
-    userServise.postLogin(req.body)
-        .then(() => { res.render('products') })
-        .catch(error => {
-            console.error(`Is not login`)
-            res.render('*')
-        })
+});
+router.post('/login', async(req, res) => {
+    console.log(req.body);
 
+    try {
+        const token = await userServise.postLogin(req.body)
+        res.cookie(authCookieName, token, { httpOnly: true });
+        res.redirect('/');
+    } catch (error) {
+        console.error(`Is not login`)
+        res.render('*')
+    }
 
-})
+});
+
 
 
 
