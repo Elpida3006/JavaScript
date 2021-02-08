@@ -16,6 +16,7 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
 
     res.clearCookie(authCookieName);
+    console.log(`you are logged out`);
     res.redirect('/');
 
 
