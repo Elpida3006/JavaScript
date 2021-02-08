@@ -25,14 +25,23 @@ router.get('/logout', (req, res) => {
 });
 router.post('/register', (req, res) => {
 
-    userServise.register(req.body)
+    userServise.postRegister(req.body)
         .then(() => { res.render('login') })
         .catch(error => {
-            console.error(`is not register`)
+            console.error(`Is not register`)
             res.render('*')
         })
 })
+router.post('/login', (req, res) => {
+    userServise.postLogin(req.body)
+        .then(() => { res.render('products') })
+        .catch(error => {
+            console.error(`Is not login`)
+            res.render('*')
+        })
 
+
+})
 
 
 
