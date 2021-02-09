@@ -1,42 +1,63 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const promisify = require('util').promisify;
-const signToken = promisify(jwt.sign);
 const config = require('../config/config');
+const getJWT = require('../utils/get-jwt');
+const signToken = promisify(jwt.sign);
+const checkLogin = require('../middlewares/check-auth');
+
 const { jwtSecret, authCookieName } = config;
 
-function postRegister(userdata) {
-    console.log(userdata);
-    if (userdata.password !== userdata.repeatPassword) { return }
-    return User.create(userdata);
+function getRegister(req, res) {
+    res.render('register');
 }
 
-function postLogin(userdata) {
-    const { username, password } = userdata
-    console.log(userdata);
+function getLogin(req, res) {
+    res.render('login');
+}
+
+function getLogout(req, res) {
+
+    res.clearCookie(authCookieName);
+    console.log(`you are logged out`);
+    res.redirect('/');
+
+}
+
+function postRegister(req, res, error) {
+    const { username, password, repeatPassword } = req.body;
+    User.create({ username, password })
+        .then(() => { res.redirect('/user/login') })
+        .catch(error => {
+            console.error(`Is not register`)
+            res.render('/')
+        })
+}
+
+function postLogin(req, res, next) {
+    const { username, password } = req.body;
     User.findOne({ username })
-        .then(User =>
-            Promise.all([User, User ? User.comparePasswords(password) : false])
-        )
-        .then(([User, match]) => {
-            console.log(User);
+        .then(user => Promise.all([user, user ? user.comparePasswords(password) : false]))
+        .then(([user, match]) => {
             if (!match) {
                 res.render('login', { errorMessage: 'Wrong username or password' });
                 return;
             }
-            return signToken({ _id: User._id }, jwtSecret)
+            return signToken({ userId: user._id }, jwtSecret)
         })
-        .then(token => {
-            if (!token) { throw error("token is not generated"); }
-            console.log(token);
-            console.log(`You are logged`);
-            return token;
-        })
-        .catch(error =>
+        .then(jwtToken => {
+            if (!jwtToken) { return; }
+            res.cookie(authCookieName, jwtToken, { httpOnly: true });
 
-            console.error(`token is missing`))
+            res.redirect('/');
+        })
+        .catch(next);
 }
 module.exports = {
+    getRegister,
+    getLogin,
+    getLogout,
+
     postRegister,
     postLogin
 }

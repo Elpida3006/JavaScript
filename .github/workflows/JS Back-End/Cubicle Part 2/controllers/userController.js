@@ -2,51 +2,20 @@ const { Router } = require('express');
 const router = Router();
 const userServise = require('../services/userServise');
 const config = require('../config/config');
-const { jwtSecret, authCookieName } = config;
-const jwt = require('jsonwebtoken');
-const promisify = require('util').promisify;
-const getJWT = require('../utils/get-jwt')
-const checkLogin = require('../middlewares/check-auth')
+const checkLogin = require('../middlewares/check-auth');
 
-router.get('/register', checkLogin(false), (req, res) => {
-    res.render('register')
-});
-router.get('/login', checkLogin(false), (req, res) => {
-    res.render('login')
-});
-router.get('/logout', checkLogin(true), (req, res) => {
+router.get('/register', checkLogin(false), userServise.getRegister)
 
-    res.clearCookie(authCookieName);
-    console.log(`you are logged out`);
-    res.redirect('/');
+router.get('/login', checkLogin(false), userServise.getLogin)
 
-
-});
+router.get('/logout', checkLogin(true), userServise.getLogout)
 
 
 
-router.post('/register', checkLogin(false), (req, res) => {
-    console.log(req.body);
-    userServise.postRegister(req.body)
-        .then(() => { res.redirect('login') })
-        .catch(error => {
-            console.error(`Is not register`)
-            res.render('/')
-        })
-});
-router.post('/login', checkLogin(false), async(req, res) => {
-    console.log(req.body);
+router.post('/register', checkLogin(false), userServise.postRegister)
 
-    try {
-        const token = await userServise.postLogin(req.body)
-        res.cookie(authCookieName, token, { httpOnly: true });
-        res.redirect('/');
-    } catch (error) {
-        console.error(`Is not login`)
-        res.render('*')
-    }
+router.post('/login', checkLogin(false), userServise.postLogin)
 
-});
 
 
 

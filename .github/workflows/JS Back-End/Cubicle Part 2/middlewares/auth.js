@@ -7,14 +7,24 @@ const getJWT = require('../utils/get-jwt');
 module.exports = function(req, res, next) {
 
     const token = getJWT(req);
-
     if (!token) { next(); return; }
 
     jwt.verify(token, jwtSecret, function(err, decoded) {
         if (err) { next(err); return; }
-        req.user = decoded;
-        res.locals.user = decoded;
-        res.locals.isLogged = true;
+
+        req.user = { _id: decoded._id };
+        res.locals.isLogged = !!req.user;
+        // if (!token) { next(); return; }
+
+        // jwt.verify(token, jwtSecret, function(err, decoded) {
+        //     if (err) {
+        //         res.clearCookie(authCookieName);
+        //     } else {
+        //         req.user = decoded;
+        //         res.locals.user = decoded;
+        //         res.locals.isLogged = true;
+        //     }
+
 
         // req.user = { _id: decoded._id };
         // res.locals.isLogged = !!req.user;

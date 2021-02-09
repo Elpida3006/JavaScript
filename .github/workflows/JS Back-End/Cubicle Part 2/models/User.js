@@ -31,9 +31,9 @@ userSchema.methods.comparePasswords = function(providedPassword) {
 
 userSchema.pre('save', function(done) {
 
-    const User = this;
+    const user = this;
 
-    if (!User.isModified('password')) {
+    if (!user.isModified('password')) {
         done();
         return;
     }
@@ -41,13 +41,12 @@ userSchema.pre('save', function(done) {
     bcrypt.genSalt(saltRounds, (err, salt) => {
         if (err) { done(err); return; }
         //tuk e s callback
-        bcrypt.hash(User.password, salt, (err, hash) => {
+        bcrypt.hash(user.password, salt, (err, hash) => {
             if (err) { done(err); return; }
-            User.password = hash;
+            user.password = hash;
             //ako potrebitelq e nov, ili e smenil parolata, da ni q heshira
             done();
         });
     });
-    console.log(User.password);
 });
 module.exports = mongoose.model('User', userSchema);
