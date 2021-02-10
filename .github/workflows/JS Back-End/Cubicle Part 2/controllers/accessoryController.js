@@ -1,8 +1,9 @@
 const { Router } = require('express');
 const router = Router();
 const service = require('../services/accessoryService');
+const isLogged = require('../middlewares/check-auth')
 
-router.get('/createAccessory', (req, res) => {
+router.get('/createAccessory', isLogged(true), (req, res) => {
     res.render('createAccessory')
 });
 
@@ -11,7 +12,7 @@ router.get('/createAccessory', (req, res) => {
 
 
 //to do create middleware validation
-router.post('/createAccessory', (req, res) => {
+router.post('/createAccessory', isLogged(true), (req, res) => {
     console.log(req.body);
 
     service.postCreateAccessory(req.body)
@@ -24,7 +25,7 @@ router.post('/createAccessory', (req, res) => {
 });
 
 
-router.get('/editAccessory/:id', (req, res) => {
+router.get('/editAccessory/:id', isLogged(true), (req, res) => {
 
     const id = req.params.id;
 
@@ -34,7 +35,7 @@ router.get('/editAccessory/:id', (req, res) => {
 
 });
 
-router.get('/deleteAccessory/:id', (req, res) => {
+router.get('/deleteAccessory/:id', isLogged(true), (req, res) => {
     const id = req.params.id;
 
     service.getId(id).then((productHbs) => {
@@ -42,7 +43,7 @@ router.get('/deleteAccessory/:id', (req, res) => {
     }).catch(error => console.error(`Delete page not found`));
 })
 
-router.post('/editAccessory/:id', (req, res) => {
+router.post('/editAccessory/:id', isLogged(true), (req, res) => {
 
     const id = req.params.id;
 
@@ -53,7 +54,7 @@ router.post('/editAccessory/:id', (req, res) => {
         .catch(error => console.error(`Edit  not found`));
 
 });
-router.post('/deleteAccessory/:id', (req, res) => {
+router.post('/deleteAccessory/:id', isLogged(true), (req, res) => {
 
     const id = req.params.id;
 

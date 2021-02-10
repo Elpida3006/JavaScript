@@ -7,10 +7,10 @@
         <p><span>Description:</span>{{productHbs.description}}</p>
         <p><span>Difficulty level:</span>{{productHbs.difficultyLevel}}</p>
         <a class="btn" id="backbtnC" href="/">Back</a>
+        {{#if isLogged}}
         <a class="btn"  id="editbtnC" href="/products/editCube/{{productHbs._id}}" >Edit Cube</a>
-    <a class="btn" id="deletbtnC"  href="/products/deleteCube/{{productHbs._id}}" >Delete Cube</a>
-      
-
+    <a class="btn" id="deletbtnC"  href="/products/deleteCube/{{productHbs._id}}" >Delete Cube</a>   
+        {{/if}}
        
       </div>
       </div>
@@ -25,8 +25,10 @@
     {{else}}
     <h3 class="italic">This cube has no accessories yet...</h3>
     {{/each}}
+    {{#if isLogged}}
     <div class="details">
        <a class="btn"  href="/products/{{productHbs._id}}/attachAccessory">Attach Accessory</a>
     </div>
+    {{/if}}
       </div>
     </main>

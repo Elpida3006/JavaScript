@@ -4,6 +4,8 @@ const service = require('../services/productServise');
 const accessoryService = require('../services/accessoryService')
 const { validateInput } = require('../middlewares/inputValidate');
 const { isValidObjectId } = require('mongoose');
+const cubeCreatorCheck = require('../utils/cube-creator-check')
+const isLogged = require('../middlewares/check-auth');
 
 router.get('/', (req, res) => {
     service.filterProducts(req.query)
@@ -13,7 +15,7 @@ router.get('/', (req, res) => {
         .catch(() => res.status(500).end())
 
 });
-router.get('/create', (req, res) => {
+router.get('/create', isLogged(true), (req, res) => {
     res.render('create')
 });
 router.get('/about-cubicle', (req, res) => {
@@ -31,26 +33,36 @@ router.get('/details/:cubeId', (req, res) => {
 
 })
 
-router.get('/editCube/:cubeId', (req, res) => {
+router.get('/editCube/:cubeId', isLogged(true), (req, res) => {
 
     const id = req.params.cubeId;
 
-    service.getCube(id).then(productHbs => {
-        res.render('editCube', productHbs);
-    }).catch(error => console.error(`Edit page not found`));
+    service.getCube(id)
+        // .then(cubeCreatorCheck(req))
+        .then(productHbs => {
+            res.render('editCube', productHbs);
+        }).catch(error => {
+            console.error(`Edit page not found`)
+            res.redirect('/products')
+        });
 
 });
 
-router.get('/deleteCube/:cubeId', (req, res) => {
+router.get('/deleteCube/:cubeId', isLogged(true), (req, res) => {
     const id = req.params.cubeId;
 
-    service.getCube(id).then((productHbs) => {
-        res.render('deleteCube', productHbs)
-    }).catch(error => console.error(`Delete page not found`));
+    service.getCube(id)
+        // .then(cubeCreatorCheck(req))
+        .then((productHbs) => {
+            res.render('deleteCube', productHbs)
+        }).catch(error => {
+            console.error(`Delete page not found`)
+            res.redirect('/products');
+        })
 })
 
 
-router.get('/:id/attachAccessory', (req, res) => {
+router.get('/:id/attachAccessory', isLogged(true), (req, res) => {
         // console.log(req.params.id);
 
         let cubeId = req.params.id;
@@ -80,7 +92,7 @@ router.get('/:id/attachAccessory', (req, res) => {
 
 
 
-router.post('/create', validateInput, (req, res) => {
+router.post('/create', validateInput, isLogged(true), (req, res) => {
     service.postCreateCube(req.body)
         .then(() => {
             console.log(req.body);
@@ -90,7 +102,7 @@ router.post('/create', validateInput, (req, res) => {
 })
 
 
-router.post('/:id/attachAccessory', (req, res) => {
+router.post('/:id/attachAccessory', isLogged(true), (req, res) => {
     let accessoryId = req.body.accessory
     let cubeId = req.params.id;
     // Promise.all([
@@ -112,18 +124,18 @@ router.post('/:id/attachAccessory', (req, res) => {
 
 })
 
-router.post('/editCube/:cubeId', (req, res) => {
+router.post('/editCube/:cubeId', isLogged(true), (req, res) => {
 
     const id = req.params.cubeId;
 
     const { name, description, difficultyLevel, imageUrl } = req.body
 
     service.postEditCube({ _id: id }, { name, description, difficultyLevel, imageUrl })
-        .then(() => res.redirect('/'))
+        .then(() => res.redirect(`/products/details/${req.params.cubeId}`))
         .catch(error => console.error(`Edit  not found`));
 
 });
-router.post('/deleteCube/:cubeId', (req, res) => {
+router.post('/deleteCube/:cubeId', isLogged(true), (req, res) => {
 
     const id = req.params.cubeId;
 
