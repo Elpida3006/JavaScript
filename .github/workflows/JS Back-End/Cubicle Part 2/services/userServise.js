@@ -1,12 +1,12 @@
 const User = require('../models/User')
-const jwt = require('jsonwebtoken');
-const promisify = require('util').promisify;
-const config = require('../config/config');
-const getJWT = require('../utils/get-jwt');
-const signToken = promisify(jwt.sign);
-const checkLogin = require('../middlewares/check-auth');
+const getJWT = require('../utils/getJWT');
+// const promisify = require('util').promisify;
+// const config = require('../config/config');
+// const getJWT = require('../utils/get-jwt');
+// const signToken = promisify(jwt.sign);
+// const checkLogin = require('../middlewares/check-auth');
 
-const { jwtSecret, authCookieName } = config;
+const { jwtSecret, authCookieName } = require('../config/config')
 
 function getRegister(req, res) {
     res.render('register');
@@ -25,7 +25,7 @@ function getLogout(req, res) {
 }
 
 function postRegister(req, res, error) {
-    const { username, password, repeatPassword } = req.body;
+    const { username, password, repeatPassword } = {...req.body };
     User.create({ username, password })
         .then(() => { res.redirect('/user/login') })
         .catch(error => {
@@ -35,21 +35,28 @@ function postRegister(req, res, error) {
 }
 
 function postLogin(req, res, next) {
-    const { username, password } = req.body;
+    const { username, password } = {...req.body };
+
     User.findOne({ username })
-        .then(user => Promise.all([user, user ? user.comparePasswords(password) : false]))
+        .then(user => {
+            return Promise.all([
+                user,
+                user ? user.comparePasswords(password, next) : false
+            ])
+        })
         .then(([user, match]) => {
             if (!match) {
                 res.render('login', { errorMessage: 'Wrong username or password' });
                 return;
             }
-            return signToken({ userId: user._id }, jwtSecret)
-        })
-        .then(jwtToken => {
-            if (!jwtToken) { return; }
-            res.cookie(authCookieName, jwtToken, { httpOnly: true });
 
-            res.redirect('/');
+            const token = getJWT.createToken(user._id);
+
+
+            res
+                .status(200)
+                .cookie(authCookieName, token, { httpOnly: true }, { maxAge: 3600000 })
+                .redirect('/products')
         })
         .catch(next);
 }

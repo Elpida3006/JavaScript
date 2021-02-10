@@ -1,5 +1,5 @@
-// module.exports = function checkLogin (req, res, next) => {
-//    
+// module.exports = function isLogged(req, res, next) {
+
 
 //     if (!req.user) {
 //         return res.render('/user/login');
@@ -8,10 +8,10 @@
 //         return res.render('/products');
 //     }
 //     next();
-//     // };
-// };
+// }
 
-module.exports = function checkLogin(shouldBeAuthenticated) {
+
+module.exports = function isLogged(shouldBeAuthenticated) {
     return function(req, res, next) {
         const isNotAuthWhenAuthIsRequired =
             shouldBeAuthenticated && !req.user;

@@ -1,34 +1,26 @@
-const config = require('../config/config');
-const jwt = require('jsonwebtoken');
-const { authCookieName, authHeaderName, jwtSecret } = config;
-const getJWT = require('../utils/get-jwt');
-// const { jwtSecret } = config;
+const { authCookieName, authHeaderName, jwtSecret } = require('../config/config');
+const { verifyToken } = require('../utils/getJWT');
+const User = require('../models/User')
 
-module.exports = function(req, res, next) {
 
-    const token = getJWT(req);
+module.exports = (req, res, next) => {
+    // console.log(req);
+    const token = req.cookies[authCookieName] || req.headers[authHeaderName] || "";
+
     if (!token) { next(); return; }
 
-    jwt.verify(token, jwtSecret, function(err, decoded) {
-        if (err) { next(err); return; }
+    verifyToken(token)
+        .then(({ _id }) => User.findOne({ _id }))
+        .then(({ username, _id }) => {
 
-        req.user = { _id: decoded._id };
-        res.locals.isLogged = !!req.user;
-        // if (!token) { next(); return; }
-
-        // jwt.verify(token, jwtSecret, function(err, decoded) {
-        //     if (err) {
-        //         res.clearCookie(authCookieName);
-        //     } else {
-        //         req.user = decoded;
-        //         res.locals.user = decoded;
-        //         res.locals.isLogged = true;
-        //     }
+            req.user = { username, _id };
+            // console.log(req.user);
+            res.locals.isLogged = Boolean(req.user);
+            res.locals.username = username;
+            next();
+        })
+        .catch(e => next(e));
+    // locals - за да не го поддаваме навсякъде, a isLogged използваме в hbs
 
 
-        // req.user = { _id: decoded._id };
-        // res.locals.isLogged = !!req.user;
-        //locals - za ada ne go podavame navsqkade, a isLogged izpolzvame v hbs
-        next();
-    });
 };

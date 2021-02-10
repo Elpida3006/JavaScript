@@ -2,19 +2,19 @@ const { Router } = require('express');
 const router = Router();
 const userServise = require('../services/userServise');
 const config = require('../config/config');
-const checkLogin = require('../middlewares/check-auth');
+const isLogged = require('../middlewares/check-auth');
 
-router.get('/register', checkLogin(false), userServise.getRegister)
+router.get('/register', isLogged(false), userServise.getRegister)
 
-router.get('/login', checkLogin(false), userServise.getLogin)
+router.get('/login', isLogged(false), userServise.getLogin)
 
-router.get('/logout', checkLogin(true), userServise.getLogout)
+router.get('/logout', isLogged(true), userServise.getLogout)
 
 
 
-router.post('/register', checkLogin(false), userServise.postRegister)
+router.post('/register', isLogged(false), userServise.postRegister)
 
-router.post('/login', checkLogin(false), userServise.postLogin)
+router.post('/login', isLogged(false), userServise.postLogin)
 
 
 
