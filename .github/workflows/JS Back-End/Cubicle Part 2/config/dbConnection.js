@@ -5,7 +5,8 @@ module.exports = (dbConnectionString) => {
     //връща промис, затова използваме ртърн
     return mongoose.connect(dbConnectionString, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useCreateIndex: true
     });
 
     // const db = mongoose.connection;
