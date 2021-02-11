@@ -34,7 +34,7 @@ router.get('/myCubes', (req, res) => {
                 if (cube.creatorId) {
                     let cubeCreatorId = (cube.creatorId.toString());
                     let myID = (req.user._id.toString());
-                    let cubeID = (cube._id.toString());
+                    // let cubeID = (cube._id.toString());
                     if (cubeCreatorId === myID) {
 
                         myCubes.push(cube)
