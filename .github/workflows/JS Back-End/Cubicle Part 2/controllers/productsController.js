@@ -21,23 +21,49 @@ router.get('/create', isLogged(true), (req, res) => {
 router.get('/about-cubicle', (req, res) => {
     res.render('about');
 });
+
+router.get('/myCubes', (req, res) => {
+
+    let myCubes = []
+    service.filterProducts(req.query)
+        .then(products => {
+            // const myID = req.user._id
+            // const cubeID = Cube.creatorId
+            products.forEach(cube => {
+
+                if (cube.creatorId) {
+                    let cubeCreatorId = (cube.creatorId.toString());
+                    let myID = (req.user._id.toString());
+                    let cubeID = (cube._id.toString());
+                    if (cubeCreatorId === myID) {
+
+                        myCubes.push(cube)
+                            // console.log(myCubes);
+                    }
+                }
+            })
+            return myCubes;
+
+        })
+        .then((myCubes) => {
+            console.log(myCubes);
+            res.render('myCubes', { title: 'myCubes', myCubes })
+
+        })
+        .catch(() => res.status(500).end())
+
+});
+
 router.get('/details/:cubeId', (req, res) => {
     // console.log(req.params.cubeId);
     let isCreator = false;
-    // let isCreatorAccessory = false;
+
 
     service.getIdAccessories(req.params.cubeId)
         .then(productHbs => {
             if (productHbs.creatorId) {
                 productHbs.creatorId.toString() === req.user._id.toString() ? isCreator = true : isCreator = false
-                    // if (productHbs.accessories) {
-                    //     // console.log(productHbs.accessories);
-                    //     productHbs.accessories.map(accessory => {
-                    //         // console.log(accessory.creatorId );
-                    //         accessory.creatorId === req.user._id ? isCreatorAccessory = true : isCreatorAccessory = false
 
-                //     })
-                // }
                 res.render('details', { title: 'Product Details', productHbs, isCreator })
             } else {
                 res.render('details', { title: 'Product Details', productHbs });
