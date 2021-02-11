@@ -1,5 +1,6 @@
 const Cube = require('../models/Cube');
 const Accessory = require('../models/Accessory')
+const cubeCreatorCheck = require('../utils/cube-creator-check');
 
 function filterProducts(query) {
     const { from, search, to } = query;
@@ -61,10 +62,10 @@ function postDeleteCube(id) {
 
 }
 
-function postCreateCube(data) {
+function postCreateCube(data, _id) {
     // let cube = new Cube(data);
     // return cube.save();
-    return Cube.create(data)
+    return Cube.create({...data, creatorId: _id })
 
 
 

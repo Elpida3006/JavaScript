@@ -10,12 +10,13 @@ function listDifferentAccessories(ids) {
     return Accessory.find({ _id: { $nin: ids } }).lean();
 }
 
-function postCreateAccessory(data) {
+function postCreateAccessory(data, _id) {
     console.log(data);
 
-    let accessory = new Accessory(data);
+    // let accessory = new Accessory(data );
 
-    return accessory.save();
+    // return accessory.save();
+    return Accessory.create({...data, creatorId: _id })
 
 }
 

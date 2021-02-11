@@ -13,6 +13,7 @@
 
 module.exports = function isLogged(shouldBeAuthenticated) {
     return function(req, res, next) {
+        console.log(req.user);
         const isNotAuthWhenAuthIsRequired =
             shouldBeAuthenticated && !req.user;
         if (

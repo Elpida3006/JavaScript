@@ -23,6 +23,10 @@ const accessorySchema = new mongoose.Schema({
     cubes: [{
         type: mongoose.Types.ObjectId,
         ref: 'Cube'
-    }]
+    }],
+    creatorId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }
 });
 module.exports = mongoose.model('Accessory', accessorySchema);
