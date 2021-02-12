@@ -10,6 +10,7 @@ router.get('/login', isLogged(false), userServise.getLogin)
 
 router.get('/logout', isLogged(true), userServise.getLogout)
 
+router.get('/profile', isLogged(true), userServise.getProfile)
 
 
 router.post('/register', isLogged(false), userServise.postRegister)

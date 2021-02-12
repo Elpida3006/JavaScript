@@ -17,13 +17,13 @@
         <li><a href="/products/about-cubicle">About</a></li>
          {{#if isLogged}}
          <li><a href="/products/myCubes">My Cubes</a></li>
-          <li><a href="/user/logout">Logout</a></li>
-      <li><a href="/products/create">Add a Cube</a></li>
+        <li><a href="/user/logout">Logout</a></li>
+        <li><a href="/products/create">Add a Cube</a></li>
         <li><a href="/accessories/createAccessory">Add an Accessory</a></li>
-   
+        <li><a class="profile"href="/user/profile">Welcome,<span>{{username}}</span></a></li>
            {{else}}
         <li><a href="/user/login">Login</a></li>
-        <li><a href="/user/register">Register</a></li>
+        <li><a  href="/user/register">Register</a></li>
  {{/if}}
       </ul>
     </header>

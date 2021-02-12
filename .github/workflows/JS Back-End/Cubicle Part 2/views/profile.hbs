@@ -1,0 +1,20 @@
+  <main>
+  <div class="user-info">
+    <div>
+        <p>Username: <span>{{username}}</span></p> |
+        <p>My offers: <span>[{{user.username}}]</span></p> |
+        
+    </div>
+    <div class="cubes">
+        {{#each user.myCubes}}
+     <div class="accessories">
+            <img
+                src="{{imageUrl}}">
+            <h3>{{name}}<span>${{price}}</span></h3>
+        </div>
+        {{/each}}
+    </div>
+    <p class="total-profit">Total cost: <span>${{total}}</span></p>
+    <p><a href="/products/myCubes">My Products</a></p>
+</div> 
+    </main>

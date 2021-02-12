@@ -12,6 +12,10 @@ function getRegister(req, res) {
     res.render('register');
 }
 
+function getProfile(req, res) {
+    res.render('profile');
+}
+
 function getLogin(req, res) {
     res.render('login');
 }
@@ -64,6 +68,7 @@ module.exports = {
     getRegister,
     getLogin,
     getLogout,
+    getProfile,
 
     postRegister,
     postLogin

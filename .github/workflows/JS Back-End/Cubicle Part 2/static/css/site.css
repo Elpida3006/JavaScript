@@ -49,6 +49,48 @@ header ul li a {
     margin: 0 1em;
 }
 
+header ul li a.profile {
+    text-decoration: #1ee90b33;
+    text-transform: uppercase;
+    color: rgb(216, 235, 236);
+    /* font-weight: bold; */
+    margin: 0 1em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    border: #ccc solid 2px;
+    background: linear-gradient(#205586, black);
+    border-radius: 10%;
+    padding-left: 8%;
+}
+
+.user-info {
+    text-decoration: #1ee90b33;
+    text-transform: uppercase;
+    color: rgb(216, 235, 236);
+    /* font-weight: bold; */
+    margin: 0 1em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    border: #ccc solid 2px;
+    background: linear-gradient(#205586, black);
+    border-radius: 10%;
+    padding-left: 8%;
+    width: 500px;
+    height: 650px;
+    margin-left: 600px;
+    padding-top: 100px;
+}
+
+header ul li a.profile span {
+    text-decoration: #1ee90b33;
+    text-transform: uppercase;
+    color: rgb(223, 238, 10);
+    /* font-weight: bold; */
+    margin: 0 1em;
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+}
+
 header ul li a:hover {
     cursor: pointer;
     text-decoration: underline;
