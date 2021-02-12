@@ -13,6 +13,7 @@ function getRegister(req, res) {
 }
 
 function getProfile(req, res) {
+    // let count = User.count.find({})
     res.render('profile');
 }
 

@@ -23,7 +23,7 @@ router.get('/about-cubicle', (req, res) => {
 });
 
 router.get('/myCubes', (req, res) => {
-
+    let count = 0;
     let myCubes = []
     service.filterProducts(req.query)
         .then(products => {
@@ -38,7 +38,8 @@ router.get('/myCubes', (req, res) => {
                     if (cubeCreatorId === myID) {
 
                         myCubes.push(cube)
-                            // console.log(myCubes);
+                        count++
+                        // console.log(myCubes);
                     }
                 }
             })

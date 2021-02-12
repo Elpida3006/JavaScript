@@ -2,18 +2,19 @@
   <div class="user-info">
     <div>
         <p>Username: <span>{{username}}</span></p> |
-        <p>My offers: <span>[{{user.username}}]</span></p> |
-        
-    </div>
-    <div class="cubes">
-        {{#each user.myCubes}}
-     <div class="accessories">
-            <img
-                src="{{imageUrl}}">
-            <h3>{{name}}<span>${{price}}</span></h3>
-        </div>
+        <p>My offers: <span>{{count}}</span></p> <div class="cubes">
+        {{#each myCubes}}
+       <div class="cube">
+        <img class="cube" src="{{imageUrl}}">
+        <p class="name">{{name}}</p>
+        <p><span>Difficulty level:</span> {{difficultyLevel}}</p>
+        <a class="btn" href="/products/details/{{_id}}">Details</a>
+      </div> 
         {{/each}}
     </div>
+        
+    </div>
+    
     <p class="total-profit">Total cost: <span>${{total}}</span></p>
     <p><a href="/products/myCubes">My Products</a></p>
 </div> 
