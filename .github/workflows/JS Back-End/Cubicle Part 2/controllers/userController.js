@@ -3,6 +3,7 @@ const router = Router();
 const userServise = require('../services/userServise');
 const config = require('../config/config');
 const isLogged = require('../middlewares/check-auth');
+const { repeatPasswordCheck } = require('../validators/userValidators')
 
 router.get('/register', isLogged(false), userServise.getRegister)
 
@@ -13,7 +14,7 @@ router.get('/logout', isLogged(true), userServise.getLogout)
 router.get('/profile', isLogged(true), userServise.getProfile)
 
 
-router.post('/register', isLogged(false), userServise.postRegister)
+router.post('/register', isLogged(false), repeatPasswordCheck, userServise.postRegister)
 
 router.post('/login', isLogged(false), userServise.postLogin)
 

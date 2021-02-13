@@ -11,6 +11,9 @@
             <label for="repeatPassword">Re-Password</label>
             <input type="password" id="repeatPassword" name="repeatPassword"  value={{repeatPassword}}>
             <input type="submit" value="Register">
-        </form>
+            {{#if errorMessage}}
+            <div class="error">{{errormessage}}</div>
+            {{/if}}
+        </form> 
     </div>
 </main>
