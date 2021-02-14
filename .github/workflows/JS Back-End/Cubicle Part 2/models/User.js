@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        maxlength: 60,
-        minlength: 3
+        // maxlength: 60,
+        // minlength: 3
     }
 });
 userSchema.methods.comparePasswords = function(providedPassword) {

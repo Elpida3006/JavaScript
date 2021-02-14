@@ -29,14 +29,23 @@ function getLogout(req, res) {
 
 }
 
-function postRegister(req, res, error) {
+function postRegister(req, res, err) {
     const { username, password, repeatPassword } = {...req.body };
+    // console.log(password);
+    // console.log(repeatPassword);
+
     User.create({ username, password })
         .then(() => { res.redirect('/user/login') })
-        .catch(error => {
-            console.error(`Is not register`)
-            res.render('/')
-        })
+        .catch(next)
+        // .catch((err) => {
+
+    //     let error = Object.keys(err.errors).map(x =>
+    //         ({ message: err.errors[x].properties.message }))[0];
+    //     console.log(errors);
+    //     res.render('register', { error });
+
+
+    // })
 }
 
 function postLogin(req, res, next) {

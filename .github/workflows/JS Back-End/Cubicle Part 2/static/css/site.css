@@ -328,8 +328,8 @@ div.form {
 }
 
 span.error {
-    animation: fadeOut 1s forwards;
-    animation-delay: 2s;
+    animation: fadeOut 6s forwards;
+    animation-delay: 5s;
     background: #EF5542;
     color: white;
     padding: 10px;
@@ -342,6 +342,7 @@ span.error {
     margin-top: 20px;
     overflow: hidden;
     display: block;
+    width: 200px;
 }
 
 img#sadFaceImg {
