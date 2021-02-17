@@ -2,7 +2,7 @@ const env = process.env.NODE_ENV || 'development';
 
 const config = {
     development: {
-        port: process.env.PORT || 3007,
+        port: process.env.PORT || 3005,
         dbConnectionString: 'mongodb://localhost:27017/book2021',
         authCookieName: 'auth_cookie',
         authHeaderName: 'auth',

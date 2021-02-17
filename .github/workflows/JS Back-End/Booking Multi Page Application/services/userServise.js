@@ -1,4 +1,5 @@
-const User = require('../models/User')
+const User = require('../models/User');
+const Hotel = require('../models/Hotel');
 const getJWT = require('../utils/getJWT');
 // const promisify = require('util').promisify;
 // const config = require('../config/config');
@@ -12,9 +13,31 @@ function getRegister(req, res) {
     res.render('register');
 }
 
+function reservation(bookedHotels) {
+    const reservationUser = [];
+
+    bookedHotels.forEach(async id => {
+        let hotel = await Hotel.findById(id)
+            // console.log(hotel.name);
+        reservationUser.push(hotel.name);
+        // console.log(reservationUser);
+        return reservationUser;
+    });
+    console.log(reservationUser);
+    return reservationUser;
+}
+
 function getProfile(req, res) {
     // let count = User.count.find({})
-    res.render('profile');
+    let userId = req.user._id
+    User.findById(userId)
+        .then((user) => {
+            console.log(user.bookedHotels);
+            bookedHotels = reservation(user.bookedHotels)
+            console.log(bookedHotels);
+            res.render('profile', { bookedHotels });
+        })
+
 }
 
 function getLogin(req, res) {
