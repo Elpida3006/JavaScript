@@ -9,7 +9,7 @@ const validator = require('validator');
 const repeatPasswordCheck = (req, res, next) => {
     // let password = req.body.password;
     // let repeatPassword = req.body.rePassword;
-    const { email, username, password, rePassword } = {...req.body };
+    const { email, fullname, password, rePassword } = {...req.body };
 
     // console.log(password);
     // console.log(repeatPassword);
@@ -60,20 +60,20 @@ const validateEmail = email => {
     return email;
 };
 
-const validateUsername = username => {
-    const minLength = 5;
-    const regEx = /^[a-zA-Z0-9]+$/;
+// const validateUsername = username => {
+//     const minLength = 5;
+//     const regEx = /^[a-zA-Z0-9]+$/;
 
-    if (username.length < minLength) {
-        throw { message: `Username should have minimum length of ${minLength}!` };
-    }
+//     if (username.length < minLength) {
+//         throw { message: `Username should have minimum length of ${minLength}!` };
+//     }
 
-    if (!regEx.test(username)) {
-        throw { message: 'Username should contain only english letters and digits!' };
-    }
+//     if (!regEx.test(username)) {
+//         throw { message: 'Username should contain only english letters and digits!' };
+//     }
 
-    return username;
-};
+//     return username;
+// };
 
 const validatePassword = password => {
     const regEx = /^[a-zA-Z0-9]+$/;
@@ -97,7 +97,7 @@ module.exports = {
     isFullPassword,
     strongPassword,
     validateEmail,
-    validateUsername,
+    // validateUsername,
     validatePassword,
 
 };

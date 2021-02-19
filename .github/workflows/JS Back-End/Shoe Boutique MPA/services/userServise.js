@@ -43,12 +43,13 @@ function getProfile(req, res, next) {
 
 function postRegister(req, res, err) {
     const { email, fullname, password, rePassword } = req.body;
-    // console.log(req.body);
-    // console.log(username);
-    // console.log(password);
-    // console.log(rePassword);
+    console.log(req.body);
+    console.log(fullname);
+    console.log(password);
+    console.log(rePassword);
 
-    User.create({ email, fullname, password })
+    // User.create({ email, fullname, password })
+    User.create(req.body)
         .then(() => {
 
             res.redirect('/user/login')

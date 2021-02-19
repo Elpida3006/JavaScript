@@ -43,7 +43,10 @@ function postEditArticle(id, data) {
 function buy(itemId, userId) {
     // console.log(itemId);
     // console.log(userId);
-    return Article.updateOne({ _id: itemId }, { $push: { buyers: userId } })
+    return Promise.all([
+        Article.updateOne({ _id: itemId }, { $push: { buyers: userId } }),
+        User.updateOne({ _id: userId }, { $push: { offersBought: itemId } })
+    ])
 }
 
 

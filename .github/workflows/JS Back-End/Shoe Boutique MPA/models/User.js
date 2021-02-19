@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     fullname: {
         type: String,
         required: false,
-        unique: true
+        // unique: true
     },
     password: {
         type: String,
@@ -28,12 +28,10 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Article'
     }],
-    offersBought: [
-        {
-            type: ObjectId,
-            ref: "Article"
-        }
-    ]
+    offersBought: [{
+        type: mongoose.Types.ObjectId,
+        ref: "Article"
+    }]
 
 });
 userSchema.methods.comparePasswords = function(providedPassword) {

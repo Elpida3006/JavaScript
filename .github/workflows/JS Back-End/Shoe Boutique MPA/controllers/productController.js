@@ -47,7 +47,7 @@ router.get('/details/:id', (req, res, next) => {
 
     service.getId(articleId)
         .then(article => {
-            let creatotId = article.createdAt.toString();
+            let creatotId = article.createdBy.toString();
             if (req.user) {
                 myID = req.user._id.toString()
             }
