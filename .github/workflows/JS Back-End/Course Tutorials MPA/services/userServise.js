@@ -1,10 +1,5 @@
-// const User = require('../models/User')
 const getJWT = require('../utils/getJWT');
-// const promisify = require('util').promisify;
-// const config = require('../config/config');
-// const getJWT = require('../utils/get-jwt');
-// const signToken = promisify(jwt.sign);
-// const checkLogin = require('../middlewares/check-auth');
+
 const { validationResult } = require('express-validator')
 const { jwtSecret, authCookieName } = require('../config/config')
 const Course = require('../models/Course')
@@ -13,35 +8,6 @@ const User = require('../models/User')
 function getRegister(req, res) {
     res.render('register');
 }
-
-// function reservation(bookedHotels) {
-//     const reservationUser = [];
-
-//     bookedHotels.forEach(async id => {
-//         let hotel = await Hotel.findById(id)
-//             // console.log(hotel.name);
-//         reservationUser.push(hotel.name);
-//         // console.log(reservationUser);
-//         return reservationUser;
-//     });
-//     console.log(reservationUser);
-//     return reservationUser;
-// }
-
-// function getProfile(req, res) {
-//     // let count = User.count.find({})
-//     let userId = req.user._id
-//     User.findById(userId)
-//         .then((user) => {
-//             console.log(user.bookedHotels);
-//             bookedHotels = reservation(user.bookedHotels)
-//             console.log(bookedHotels);
-//             res.render('profile', { bookedHotels });
-//         })
-
-// }
-
-
 
 function getLogin(req, res) {
     res.render('login');
@@ -57,10 +23,9 @@ function getLogout(req, res) {
 
 function postRegister(req, res, err) {
     const { username, password, rePassword } = {...req.body };
-    // console.log(email);
-    console.log(username);
-    console.log(password);
-    console.log(rePassword);
+    // console.log(username);
+    // console.log(password);
+    // console.log(rePassword);
 
     User.create({ email, username, password })
         .then(() => { res.redirect('/user/login') })
@@ -114,9 +79,9 @@ module.exports = {
     getRegister,
     getLogin,
     getLogout,
-    // getProfile,
+
 
     postRegister,
     postLogin,
-    // reservation
+
 }
