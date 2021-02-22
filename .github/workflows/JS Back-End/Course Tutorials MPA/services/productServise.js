@@ -8,9 +8,7 @@ function create(data, _id) {
     let isChecked = isPublic
 
     console.log(`isChecked is ${isChecked}`);
-    //- tova ni idva ot formata s req.body
-    //createdAt: new Date() - nie si go sazdavame, zashtoto ne idva ot nikade
-    //creatorId -  go vzimame ot req.user._id
+ 
     data = new Date()
         .toString().split('GMT')[0]
     console.log(data);

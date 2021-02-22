@@ -10,4 +10,8 @@ module.exports = (dbConnectionString) => {
         useFindAndModify: false
     });
 
+    // const db = mongoose.connection;
+    // db.on('error', console.error.bind(console, `error connection to database: `))
+    // db.once('open', () => console.log(`db in use`))
+    // return db;
 }
