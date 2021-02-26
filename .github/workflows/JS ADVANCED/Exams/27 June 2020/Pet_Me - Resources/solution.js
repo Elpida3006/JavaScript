@@ -1,4 +1,3 @@
-//иво
 function solve() {
     let buttonElement = document.querySelector('#container button');
     let inputElements = Array.from(document.querySelectorAll('#container input'));

@@ -23,7 +23,7 @@ function solve() {
         e.preventDefault();
 
         //validate input
-        // 1. Greshka - value trqbwa da sa vytre!
+
         let inputTaskValue = inputTask.value;
         let inputDescriptionValue = inputDescription.value;
         let inputTaskDateValue = inputDate.value;
@@ -33,7 +33,7 @@ function solve() {
             return;
         }
         //create  elements 1 childeren of 1 children of wrapper
-        // ili childern of parent of nextsublingElement .orange
+        // or childern of parent of nextsublingElement .orange
 
 
         let articleInOpen = document.createElement('article')
@@ -54,7 +54,7 @@ function solve() {
         let divFlex = document.createElement('div');
         divFlex.classList.add('flex')
 
-        //classList не overwrite-va предишния клас?
+        //classList do not  overwrite previous class
         // divFlex.className = 'flex'
         articleInOpen.appendChild(divFlex);
 

@@ -44,7 +44,7 @@ class CristhmasDinner {
     }
 
     inviteGuests(name, dish) {
-        //tyrsim propyrti na obekt - recipeName w masiw - this.dishes
+        //search property in object- recipeName in array this.dishes
         let searchDish = this.dishes.filter(dishCompleted => dishCompleted.recipeName == dish)
         if (!searchDish) {
             throw new Error(`We do not have this dish`)
@@ -57,7 +57,7 @@ class CristhmasDinner {
     }
     showAttendance() {
 
-        //търсим пропърти на обект (this.guests) дали го има като пропърти на обект (reciepe) в масив(this.dishes)
+        //search property in object- (this.guests) do you have at  property  object's-(reciepe) in array (this.dishes)
         let result = '';
         Object.entries(this.guests).forEach(nameDish => {
             let product = this.dishes.find(reciepe => reciepe.recipeName == nameDish[1])

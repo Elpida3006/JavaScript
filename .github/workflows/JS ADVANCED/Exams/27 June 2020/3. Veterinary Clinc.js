@@ -1,4 +1,3 @@
-//иво
 class VeterinaryClinic {
     clients = [];
 

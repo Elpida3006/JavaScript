@@ -1,5 +1,3 @@
-//коцето
-
 class Bank {
     constructor(bankName) {
         this._bankName = bankName;

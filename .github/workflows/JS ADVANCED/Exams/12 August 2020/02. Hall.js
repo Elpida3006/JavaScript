@@ -11,8 +11,7 @@ function solveClasses() {
         hallEvent(title) {
             if (this.events.includes(title)) {
                 throw new Error('This event is already added!');
-                // s `This event is already added!` - 88
-                // sys skobi - 100
+
             }
             this.events.push(title)
             return `Event is added.`
@@ -24,7 +23,7 @@ function solveClasses() {
         toString() {
             let string = `${this.name} hall - ${this.capacity}`
             if (this.events.length > 0) {
-                //s [] gyrmi djudje
+                //without [] - djudje
                 string += `\nEvents: ${this.events.join(', ')}`
 
             }

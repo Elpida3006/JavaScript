@@ -2,7 +2,7 @@ function stopwatch() {
 
 
     let intervalId;
-    //1.trqbwa ni referenciq za startBtn, stopBtn, time
+    //1.Have to ref. for startBtn, stopBtn, time
 
     const time = document.getElementById('time')
     const startBtn = document.getElementById('startBtn')
@@ -41,7 +41,7 @@ function stopwatch() {
 
         time.textContent = '00:00';
 
-        //greshka v uslovieto , ne se restartva taimera na stop, ana start, pri natiskaneto!!!!
+        //error: the timer restart in start click!!!!
     }
 
     function stopBtnHandler() {

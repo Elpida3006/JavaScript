@@ -29,7 +29,7 @@ function solution() {
         li.appendChild(btnDiscard)
 
 
-        // raboteshto -->>
+        // work -->>
         const items = [...listGiftUl.querySelectorAll('li')];
         listGiftUl.innerHTML = '';
 

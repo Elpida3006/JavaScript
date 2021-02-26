@@ -3,7 +3,7 @@ function toggle() {
 
     const hidden = document.querySelector('#extra')
     const buttonShowHide = document.querySelectorAll('.button')[0]
-        //в условието е 1 бутон, а така се прави ако с аповече, С querySelectorAll
+        //1 бутон,ако е с аповече, С querySelectorAll
     if (hidden.style.display === 'block') {
         buttonShowHide.textContent = 'More';
         hidden.style.display = 'none'

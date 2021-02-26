@@ -10,7 +10,7 @@ function addItem() {
     const a = document.createElement('a')
 
     const text = document.createTextNode(textInputValue)
-        //ne stava s createElement, trqbw da zakachi i a taga i teksta vatre, zatova e s textNode
+        //do not work with createElement, have atTache  "a" tag-a and text inside, - correct is with textNode
 
     a.textContent = '[Delete]'
     a.href = '#'

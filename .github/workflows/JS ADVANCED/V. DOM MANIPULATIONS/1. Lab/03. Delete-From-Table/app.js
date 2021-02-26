@@ -1,20 +1,20 @@
 function deleteByEmail() {
-    // 1. Select, dostupvame
+    // 1. Select, 
     const emailTids = Array.from(document.querySelectorAll('#customers td:last-child'))
         // .map(td => td.textContent)
 
     const emailInput = document.querySelector('input[name = "email"]')
     const result = document.getElementById("result")
 
-    //**kato v while, da ne zabravqme da si zachistvame spisyka sled kato sme go vzeli */
-    // result.textContent = '', v sluchaq ne trqbwa da zachistvame tova
+    //**in while, do not forget to clear array */
+    // result.textContent = '', in this case do not have to clear this
 
-    // 2. Vziamme stoinostta
+    // 2. Get  value
     const emailInputValue = emailInput.value
 
-    //3. proverqvame dali ima  email/label - neshto v praznoto pole za proverka
+    //3. Have you email/label - think in label
     if (!emailInputValue) { return; }
-    //4. Proverqvame za tochen email i novozamenqme stoinostta(textContent == innerText, innerHtml vzima vsichko - celiq red ot html-a, koeto rqdko se iska)
+    //4. Have you exactly email and replace (textContent == innerText, innerHtml get all - row from  html-a)
 
     const td = emailTids.find(function(td) { return td.textContent == emailInputValue })
     emailInput.value = ''

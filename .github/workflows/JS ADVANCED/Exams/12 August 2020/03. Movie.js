@@ -3,12 +3,12 @@ class Movie {
         this.movieName = movieName;
         this.ticketPrice = +ticketPrice
         this.screenings = []
-            //ekranizaciq
+            //екранизация
         this.totalProfit = 0;
 
-        //pechalba
+        //печалба
         this.ticketsCount = 0;
-        //prodadeni bileti
+        //продадени билети
     }
 
     newScreening(date, hall, description) {

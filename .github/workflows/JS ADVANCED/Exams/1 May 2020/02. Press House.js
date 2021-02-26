@@ -23,7 +23,7 @@ function solve() {
 
         get content() {
             return this._content
-                //kogato ne e negowo sobstweno, a nasledeno trqbwa da go vzemem taka i da izvyrshim deistvieto v set, pak s this._ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //when is no own, and inheritance.
         }
 
         set content(value) {
@@ -104,7 +104,7 @@ function solve() {
 
 
 
-//коцето
+
 function solve() {
     class Article {
         constructor(title, content) {

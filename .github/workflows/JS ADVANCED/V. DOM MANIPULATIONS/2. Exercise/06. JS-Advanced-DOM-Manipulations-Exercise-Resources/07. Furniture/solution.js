@@ -1,4 +1,3 @@
-//25???????????
 // function solve() {
 //     const table = document.querySelector('tbody')
 //         //слагаме Listenners на двата бутона
@@ -105,7 +104,7 @@ function solve() {
     }
 
 }
-//25?????
+
 // function solve() {
 //     let [generate, buy] = [...document.querySelectorAll("button")];
 //     let [input, output] = document.querySelectorAll("textarea");
