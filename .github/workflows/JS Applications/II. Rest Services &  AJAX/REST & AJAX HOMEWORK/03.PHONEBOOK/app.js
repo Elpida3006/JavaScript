@@ -1,7 +1,6 @@
 function attachEvents() {
 
-    //Тък съм сменила базата данни като направих своя, тъй като дадената явно някой я беше изтрил и не се достъпваше нито през POSTMAN, нито оттук :)
-    //Have fun! Оставила съм я на тестов режил, би трябвало да е достъпна :)
+
 
     let url = 'https://phonebook-65b0f.firebaseio.com/phonebook.json'
 
@@ -32,7 +31,7 @@ function attachEvents() {
 
                     let delURL = 'https://phonebook-65b0f.firebaseio.com/phonebook/' + key + '.json'
                     btnDelete.addEventListener('click', () => {
-                        //trqbva  da se iztrie i ot bazata
+                        //have to remove from db
 
                         fetch(delURL, {
                             method: 'DELETE',
