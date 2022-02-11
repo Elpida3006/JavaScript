@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express-handlebars": "^5.1.0"
+    "express-handlebars": "^5.3.1"
   }
 }
